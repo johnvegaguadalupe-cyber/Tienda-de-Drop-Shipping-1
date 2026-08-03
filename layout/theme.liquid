@@ -28,14 +28,18 @@
       --page-width: {{ settings.page_width }}px;
       --spacing-sections: {{ settings.spacing_sections }}px;
       --border-radius: {{ settings.border_radius }}px;
-      --font-heading-family: {{ settings.font_heading.family }}, sans-serif;
-      --font-heading-weight: {{ settings.font_heading.weight }};
-      --font-body-family: {{ settings.font_body.family }}, sans-serif;
-      --font-body-weight: {{ settings.font_body.weight }};
+      --font-heading-family: {{ settings.font_heading.family | default: 'sans-serif' }}, sans-serif;
+      --font-heading-weight: {{ settings.font_heading.weight | default: 400 }};
+      --font-body-family: {{ settings.font_body.family | default: 'sans-serif' }}, sans-serif;
+      --font-body-weight: {{ settings.font_body.weight | default: 400 }};
     }
   {% endstyle %}
-  {{ settings.font_heading | font_face: font_display: 'swap' }}
-  {{ settings.font_body | font_face: font_display: 'swap' }}
+  {%- if settings.font_heading.family -%}
+    {{ settings.font_heading | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  {%- if settings.font_body.family -%}
+    {{ settings.font_body | font_face: font_display: 'swap' }}
+  {%- endif -%}
 
   <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
   <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
