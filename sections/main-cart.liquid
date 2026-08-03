@@ -1,0 +1,62 @@
+<div class="section main-cart page-width">
+  <h1>{{ 'cart.title' | t }}</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <p class="main-cart__empty">{{ 'cart.empty' | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="button button--primary">{{ 'general.continue_shopping' | t }}</a>
+  {%- else -%}
+    {% form 'cart', cart, id: 'CartForm' %}
+      <table class="main-cart__table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>{{ 'products.product.quantity' | t }}</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr class="main-cart__row">
+              <td class="main-cart__product">
+                <a href="{{ item.url }}">
+                  <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.image.alt | escape }}" width="80" height="80" loading="lazy">
+                </a>
+                <div>
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  {%- if item.variant.title != 'Default Title' -%}
+                    <p class="main-cart__variant">{{ item.variant.title }}</p>
+                  {%- endif -%}
+                  <button type="button" class="main-cart__remove" data-remove-item data-line="{{ forloop.index }}">{{ 'cart.remove' | t }}</button>
+                </div>
+              </td>
+              <td>
+                <input type="number" name="updates[{{ forloop.index0 }}]" value="{{ item.quantity }}" min="0" data-quantity-input data-line="{{ forloop.index }}">
+              </td>
+              <td>{{ item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+
+      {%- if settings.show_cart_note -%}
+        <label for="CartNote">{{ 'cart.note' | t }}</label>
+        <textarea name="note" id="CartNote">{{ cart.note }}</textarea>
+      {%- endif -%}
+
+      <div class="main-cart__summary">
+        <div class="main-cart__subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <button type="submit" name="update" class="button button--secondary">{{ 'cart.update' | t }}</button>
+        <button type="submit" name="checkout" class="button button--primary button--large">{{ 'cart.checkout' | t }}</button>
+      </div>
+    {% endform %}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Carrito"
+}
+{% endschema %}

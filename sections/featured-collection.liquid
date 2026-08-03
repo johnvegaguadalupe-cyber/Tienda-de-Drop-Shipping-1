@@ -1,0 +1,56 @@
+<div class="section featured-collection page-width" style="--columns: {{ section.settings.columns }};">
+  <div class="section__header">
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="section__subheading">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="product-grid">
+    {%- liquid
+      assign source_collection = collections[section.settings.collection]
+      assign product_limit = section.settings.products_to_show
+    -%}
+    {%- if source_collection != blank -%}
+      {%- for product in source_collection.products limit: product_limit -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..product_limit) -%}
+        <div class="product-card product-card--placeholder">
+          <div class="product-card__media">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          <div class="product-card__info">
+            <p class="product-card__title">Nombre del producto</p>
+            <div class="price"><span>19,99&nbsp;€</span></div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.show_view_all and source_collection != blank -%}
+    <div class="section__footer">
+      <a href="{{ source_collection.url }}" class="button button--secondary">{{ section.settings.view_all_label }}</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Colección destacada",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Los favoritos" },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Lo más vendido esta semana" },
+    { "type": "collection", "id": "collection", "label": "Colección" },
+    { "type": "range", "id": "products_to_show", "label": "Nº de productos", "min": 2, "max": 12, "step": 1, "default": 8 },
+    { "type": "range", "id": "columns", "label": "Columnas en escritorio", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "checkbox", "id": "show_view_all", "label": "Mostrar botón \"ver todo\"", "default": true },
+    { "type": "text", "id": "view_all_label", "label": "Texto del botón", "default": "Ver todo" }
+  ],
+  "presets": [
+    { "name": "Colección destacada" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,88 @@
+<header class="header">
+  {%- if section.settings.announcement_text != blank -%}
+    <div class="announcement-bar">
+      <p>
+        {{ section.settings.announcement_text }}
+        {%- if section.settings.announcement_link != blank -%}
+          <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_link_text }}</a>
+        {%- endif -%}
+      </p>
+    </div>
+  {%- endif -%}
+
+  <div class="header__inner page-width">
+    <button type="button" class="header__menu-toggle" data-mobile-nav-toggle aria-expanded="false" aria-controls="MobileNav">
+      {% render 'icon', icon: 'menu' %}
+      <span class="visually-hidden">{{ 'header.menu' | t }}</span>
+    </button>
+
+    <a href="{{ routes.root_url }}" class="header__logo">
+      {%- if section.settings.logo -%}
+        <img
+          src="{{ section.settings.logo | image_url: width: 300 }}"
+          alt="{{ shop.name }}"
+          width="{{ section.settings.logo_width }}"
+          style="height:auto;max-width:{{ section.settings.logo_width }}px;"
+        >
+      {%- else -%}
+        <span class="header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" aria-label="{{ 'header.menu' | t }}">
+      <ul>
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__icons">
+      <button type="button" class="header__icon-btn" data-search-toggle aria-expanded="false" aria-controls="HeaderSearch">
+        {% render 'icon', icon: 'search' %}
+        <span class="visually-hidden">{{ 'header.search' | t }}</span>
+      </button>
+      <a href="{{ routes.account_url }}" class="header__icon-btn">
+        {% render 'icon', icon: 'user' %}
+        <span class="visually-hidden">{{ 'header.account' | t }}</span>
+      </a>
+      <button type="button" class="header__icon-btn header__cart-btn" data-cart-toggle aria-expanded="false" aria-controls="CartDrawer">
+        {% render 'icon', icon: 'cart' %}
+        <span class="header__cart-count" data-cart-count>{{ cart.item_count }}</span>
+        <span class="visually-hidden">{{ 'header.cart' | t }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header__search" id="HeaderSearch" hidden>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="page-width">
+      <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" value="{{ search.terms | escape }}">
+      <input type="hidden" name="type" value="product">
+      <button type="submit">{% render 'icon', icon: 'search' %}</button>
+    </form>
+  </div>
+
+  <nav class="mobile-nav" id="MobileNav" hidden aria-label="{{ 'header.menu' | t }}">
+    <ul>
+      {%- for link in section.settings.menu.links -%}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Cabecera",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_width", "label": "Ancho del logo", "min": 60, "max": 260, "step": 10, "unit": "px", "default": 140 },
+    { "type": "link_list", "id": "menu", "label": "Menú", "default": "main-menu" },
+    { "type": "text", "id": "announcement_text", "label": "Texto de la barra de aviso", "default": "Envío gratis en pedidos superiores a 50€" },
+    { "type": "url", "id": "announcement_link", "label": "Enlace de la barra de aviso" },
+    { "type": "text", "id": "announcement_link_text", "label": "Texto del enlace", "default": "Comprar ahora" }
+  ]
+}
+{% endschema %}

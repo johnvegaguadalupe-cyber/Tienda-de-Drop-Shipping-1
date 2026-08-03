@@ -1,0 +1,56 @@
+<div class="cart-drawer" id="CartDrawer" hidden>
+  <div class="cart-drawer__overlay" data-cart-toggle></div>
+  <div class="cart-drawer__panel" role="dialog" aria-modal="true" aria-label="{{ 'cart.title' | t }}">
+    <div class="cart-drawer__header">
+      <h2>{{ 'cart.title' | t }}</h2>
+      <button type="button" class="cart-drawer__close" data-cart-toggle>
+        {% render 'icon', icon: 'close' %}
+        <span class="visually-hidden">{{ 'general.404.link' | t }}</span>
+      </button>
+    </div>
+
+    <div class="cart-drawer__body" data-cart-items>
+      {%- if cart.item_count == 0 -%}
+        <p class="cart-drawer__empty">{{ 'cart.empty' | t }}</p>
+      {%- else -%}
+        <ul class="cart-drawer__list">
+          {%- for item in cart.items -%}
+            <li class="cart-drawer__item" data-cart-line="{{ forloop.index }}">
+              <a href="{{ item.url }}" class="cart-drawer__item-image">
+                <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.image.alt | escape }}" width="80" height="80" loading="lazy">
+              </a>
+              <div class="cart-drawer__item-info">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+                {%- if item.variant.title != 'Default Title' -%}
+                  <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
+                {%- endif -%}
+                <div class="cart-drawer__item-qty">
+                  <input type="number" min="0" value="{{ item.quantity }}" data-quantity-input data-line="{{ forloop.index }}" aria-label="{{ 'general.search.search' | t }}">
+                  <button type="button" data-remove-item data-line="{{ forloop.index }}">{{ 'cart.remove' | t }}</button>
+                </div>
+              </div>
+              <div class="cart-drawer__item-price">{{ item.final_line_price | money }}</div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span data-cart-subtotal>{{ cart.total_price | money }}</span>
+        </div>
+        <a href="{{ routes.cart_url }}" class="button button--secondary">{{ 'cart.title' | t }}</a>
+        <a href="{{ routes.cart_url }}/checkout" class="button button--primary">{{ 'cart.checkout' | t }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Carrito lateral"
+}
+{% endschema %}

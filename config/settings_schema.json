@@ -1,0 +1,58 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Dropship Starter",
+    "theme_version": "1.0.0",
+    "theme_author": "Tienda de Drop Shipping",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Fondo", "default": "#ffffff" },
+      { "type": "color", "id": "color_text", "label": "Texto", "default": "#1a1a1a" },
+      { "type": "color", "id": "color_primary", "label": "Color principal (botones, enlaces)", "default": "#1a73e8" },
+      { "type": "color", "id": "color_primary_text", "label": "Texto sobre el color principal", "default": "#ffffff" },
+      { "type": "color", "id": "color_accent", "label": "Color de acento (ofertas, descuentos)", "default": "#e63946" },
+      { "type": "color", "id": "color_border", "label": "Bordes", "default": "#e5e5e5" },
+      { "type": "color", "id": "color_surface", "label": "Fondo de tarjetas/secciones", "default": "#f7f7f7" }
+    ]
+  },
+  {
+    "name": "Tipografía",
+    "settings": [
+      { "type": "font_picker", "id": "font_heading", "label": "Fuente de títulos", "default": "assistant_n4" },
+      { "type": "font_picker", "id": "font_body", "label": "Fuente de texto", "default": "assistant_n4" }
+    ]
+  },
+  {
+    "name": "Diseño",
+    "settings": [
+      { "type": "range", "id": "page_width", "label": "Ancho máximo de página", "min": 1000, "max": 1600, "step": 50, "unit": "px", "default": 1300 },
+      { "type": "range", "id": "spacing_sections", "label": "Espaciado entre secciones", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 48 },
+      { "type": "range", "id": "border_radius", "label": "Redondeo de esquinas", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 8 }
+    ]
+  },
+  {
+    "name": "Carrito",
+    "settings": [
+      { "type": "select", "id": "cart_type", "label": "Tipo de carrito", "options": [ { "value": "drawer", "label": "Panel lateral" }, { "value": "page", "label": "Página de carrito" } ], "default": "drawer" },
+      { "type": "checkbox", "id": "show_cart_note", "label": "Permitir nota de pedido", "default": true }
+    ]
+  },
+  {
+    "name": "Redes sociales",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      { "type": "image_picker", "id": "favicon", "label": "Imagen del favicon (cuadrada)" }
+    ]
+  }
+]

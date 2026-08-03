@@ -1,0 +1,42 @@
+{%- comment -%}
+  Renders a product card for grids.
+  Usage: {% render 'product-card', product: product %}
+{%- endcomment -%}
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card__media-link">
+    <div class="product-card__media">
+      {%- if product.featured_media -%}
+        <img
+          src="{{ product.featured_media | image_url: width: 600 }}"
+          alt="{{ product.featured_media.alt | escape }}"
+          loading="lazy"
+          width="{{ product.featured_media.width }}"
+          height="{{ product.featured_media.height }}"
+          class="product-card__image"
+        >
+        {%- if product.media[1] -%}
+          <img
+            src="{{ product.media[1] | image_url: width: 600 }}"
+            alt=""
+            loading="lazy"
+            class="product-card__image product-card__image--hover"
+          >
+        {%- endif -%}
+      {%- else -%}
+        <div class="product-card__placeholder">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      {%- endif -%}
+      {%- if product.compare_at_price > product.price -%}
+        <span class="product-card__sale-badge">{{ 'products.product.on_sale' | t }}</span>
+      {%- endif -%}
+    </div>
+  </a>
+  <div class="product-card__info">
+    {%- if product.vendor != blank -%}
+      <p class="product-card__vendor">{{ product.vendor }}</p>
+    {%- endif -%}
+    <h3 class="product-card__title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    {%- render 'price', product: product -%}
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>
+    {{ page_title }}{% if page_title != shop.name %} · {{ shop.name }}{% endif %}
+  </title>
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% if settings.favicon %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {% endif %}
+
+  {{ content_for_header }}
+
+  {% style %}
+    :root {
+      --color-background: {{ settings.color_background }};
+      --color-text: {{ settings.color_text }};
+      --color-primary: {{ settings.color_primary }};
+      --color-primary-text: {{ settings.color_primary_text }};
+      --color-accent: {{ settings.color_accent }};
+      --color-border: {{ settings.color_border }};
+      --color-surface: {{ settings.color_surface }};
+      --page-width: {{ settings.page_width }}px;
+      --spacing-sections: {{ settings.spacing_sections }}px;
+      --border-radius: {{ settings.border_radius }}px;
+      --font-heading-family: {{ settings.font_heading.family }}, sans-serif;
+      --font-heading-weight: {{ settings.font_heading.weight }};
+      --font-body-family: {{ settings.font_body.family }}, sans-serif;
+      --font-body-weight: {{ settings.font_body.weight }};
+    }
+  {% endstyle %}
+  {{ settings.font_heading | font_face: font_display: 'swap' }}
+  {{ settings.font_body | font_face: font_display: 'swap' }}
+
+  <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+  <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+</head>
+<body class="template-{{ request.page_type }}">
+  <a class="skip-to-content-link visually-hidden" href="#main-content">Saltar al contenido</a>
+
+  {% section 'header' %}
+
+  <main id="main-content">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {% if settings.cart_type == 'drawer' %}
+    {% section 'cart-drawer' %}
+  {% endif %}
+</body>
+</html>

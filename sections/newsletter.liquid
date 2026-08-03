@@ -1,0 +1,32 @@
+<div class="section newsletter-section page-width">
+  <div class="newsletter-section__box">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.subheading != blank -%}
+      <p>{{ section.settings.subheading }}</p>
+    {%- endif -%}
+    {% form 'customer', id: 'NewsletterSection' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <div class="newsletter-section__form">
+        <label class="visually-hidden" for="NewsletterEmail">{{ 'general.newsletter.email_placeholder' | t }}</label>
+        <input type="email" name="contact[email]" id="NewsletterEmail" placeholder="{{ 'general.newsletter.email_placeholder' | t }}" required>
+        <button type="submit" class="button button--primary">{{ 'general.newsletter.submit' | t }}</button>
+      </div>
+      {%- if form.posted_successfully? -%}
+        <p class="newsletter-section__success">{{ 'general.newsletter.success' | t }}</p>
+      {%- endif -%}
+    {% endform %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Únete y recibe un 10% de descuento" },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Suscríbete para recibir ofertas exclusivas y novedades." }
+  ],
+  "presets": [
+    { "name": "Newsletter" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+{
+  "general": {
+    "search": {
+      "search": "Search",
+      "placeholder": "Search our store",
+      "no_results": "No results found for \"{{ terms }}\"",
+      "results_count": "{{ count }} results"
+    },
+    "newsletter": {
+      "heading": "Join and get 10% off",
+      "subheading": "Subscribe to get exclusive deals and news.",
+      "email_placeholder": "Your email",
+      "submit": "Subscribe",
+      "success": "Thanks for subscribing!"
+    },
+    "password_page": {
+      "login_form_heading": "Enter using password",
+      "login_password_button": "Enter",
+      "login_form_password_label": "Password",
+      "login_form_error": "Wrong password, try again.",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\">Log in here</a>"
+    },
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you're looking for doesn't exist or was moved.",
+      "link": "Back to store"
+    },
+    "continue_shopping": "Continue shopping"
+  },
+  "header": {
+    "menu": "Menu",
+    "cart": "Cart",
+    "account": "My account",
+    "search": "Search"
+  },
+  "footer": {
+    "payment_methods": "Payment methods",
+    "copyright": "All rights reserved."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Sold out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "view_details": "View details",
+      "on_sale": "Sale",
+      "sku": "SKU",
+      "vendor": "Brand",
+      "description": "Description"
+    }
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "note": "Add an order note",
+    "update": "Update",
+    "continue": "Continue shopping",
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions"
+  }
+}

@@ -1,0 +1,62 @@
+<div class="section testimonials page-width">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="section__header">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+
+  <div class="testimonials__grid">
+    {%- for block in section.blocks -%}
+      <div class="testimonial" {{ block.shopify_attributes }}>
+        <div class="testimonial__stars" aria-hidden="true">
+          {%- for i in (1..5) -%}
+            {%- if i <= block.settings.rating -%}{% render 'icon', icon: 'star', size: 16 %}{%- endif -%}
+          {%- endfor -%}
+        </div>
+        <p class="testimonial__quote">&ldquo;{{ block.settings.quote }}&rdquo;</p>
+        <div class="testimonial__author">
+          {%- if block.settings.avatar -%}
+            <img src="{{ block.settings.avatar | image_url: width: 80 }}" alt="" width="40" height="40" loading="lazy">
+          {%- endif -%}
+          <span>{{ block.settings.author }}</span>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonios",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Lo que dicen nuestros clientes" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        { "type": "image_picker", "id": "avatar", "label": "Foto (opcional)" },
+        { "type": "range", "id": "rating", "label": "Estrellas", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Opinión", "default": "Llegó antes de lo esperado y la calidad superó mis expectativas." },
+        { "type": "text", "id": "author", "label": "Nombre", "default": "Cliente verificado" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "Llegó antes de lo esperado y la calidad superó mis expectativas.", "author": "María G." } },
+      { "type": "testimonial", "settings": { "rating": 5, "quote": "Atención al cliente rápida y producto tal cual la foto.", "author": "Carlos R." } },
+      { "type": "testimonial", "settings": { "rating": 4, "quote": "Muy buena relación calidad-precio, repetiré compra.", "author": "Lucía P." } }
+    ]
+  },
+  "presets": [
+    {
+      "name": "Testimonios",
+      "blocks": [
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Llegó antes de lo esperado y la calidad superó mis expectativas.", "author": "María G." } },
+        { "type": "testimonial", "settings": { "rating": 5, "quote": "Atención al cliente rápida y producto tal cual la foto.", "author": "Carlos R." } },
+        { "type": "testimonial", "settings": { "rating": 4, "quote": "Muy buena relación calidad-precio, repetiré compra.", "author": "Lucía P." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

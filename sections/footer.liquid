@@ -1,0 +1,79 @@
+<footer class="footer">
+  <div class="footer__inner page-width">
+    <div class="footer__block footer__about">
+      {%- if section.settings.logo -%}
+        <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="120" style="height:auto;">
+      {%- else -%}
+        <p class="footer__logo-text">{{ shop.name }}</p>
+      {%- endif -%}
+      {%- if section.settings.about_text != blank -%}
+        <p class="footer__about-text">{{ section.settings.about_text }}</p>
+      {%- endif -%}
+      <div class="footer__social">
+        {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}
+        {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" target="_blank" rel="noopener">Facebook</a>{%- endif -%}
+        {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>{%- endif -%}
+      </div>
+    </div>
+
+    <div class="footer__block">
+      <h3>{{ section.settings.menu_1_title }}</h3>
+      <ul>
+        {%- for link in section.settings.menu_1.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="footer__block">
+      <h3>{{ section.settings.menu_2_title }}</h3>
+      <ul>
+        {%- for link in section.settings.menu_2.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="footer__block footer__newsletter">
+      <h3>{{ 'general.newsletter.heading' | t }}</h3>
+      <p>{{ 'general.newsletter.subheading' | t }}</p>
+      {% form 'customer', id: 'FooterNewsletter' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="footer__newsletter-form">
+          <label class="visually-hidden" for="FooterEmail">{{ 'general.newsletter.email_placeholder' | t }}</label>
+          <input type="email" name="contact[email]" id="FooterEmail" placeholder="{{ 'general.newsletter.email_placeholder' | t }}" required>
+          <button type="submit" class="button button--primary">{{ 'general.newsletter.submit' | t }}</button>
+        </div>
+        {%- if form.posted_successfully? -%}
+          <p class="footer__newsletter-success">{{ 'general.newsletter.success' | t }}</p>
+        {%- endif -%}
+      {% endform %}
+    </div>
+  </div>
+
+  <div class="footer__bottom page-width">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} — {{ 'footer.copyright' | t }}</p>
+    {%- if section.settings.show_payment_icons -%}
+      <ul class="footer__payment-icons">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pie de página",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "textarea", "id": "about_text", "label": "Texto sobre la tienda", "default": "Productos seleccionados con envío a toda España y Latinoamérica." },
+    { "type": "text", "id": "menu_1_title", "label": "Título columna 1", "default": "Ayuda" },
+    { "type": "link_list", "id": "menu_1", "label": "Menú columna 1", "default": "footer" },
+    { "type": "text", "id": "menu_2_title", "label": "Título columna 2", "default": "Legal" },
+    { "type": "link_list", "id": "menu_2", "label": "Menú columna 2" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Mostrar iconos de métodos de pago", "default": true }
+  ]
+}
+{% endschema %}

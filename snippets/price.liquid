@@ -1,0 +1,20 @@
+{%- comment -%}
+  Renders a product/variant price, with compare-at price when on sale.
+  Usage: {% render 'price', product: product, variant: product.selected_or_first_available_variant %}
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product
+  assign compare_at_price = target.compare_at_price
+  assign price = target.price
+-%}
+<div class="price{% if compare_at_price > price %} price--on-sale{% endif %}">
+  {%- if compare_at_price > price -%}
+    <span class="price__badge">{{ 'products.product.on_sale' | t }}</span>
+    <span class="price__compare visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+    <s class="price__compare">{{ compare_at_price | money }}</s>
+    <span class="price__sale visually-hidden">{{ 'products.product.on_sale' | t }}</span>
+    <span class="price__sale">{{ price | money }}</span>
+  {%- else -%}
+    <span>{{ price | money }}</span>
+  {%- endif -%}
+</div>

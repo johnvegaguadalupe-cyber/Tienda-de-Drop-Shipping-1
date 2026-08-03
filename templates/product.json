@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_countdown": true,
+        "countdown_text": "¡Oferta termina en:",
+        "countdown_minutes": 60,
+        "show_trust_row": true,
+        "trust_shipping_text": "Envío en 3-7 días",
+        "trust_payment_text": "Pago 100% seguro",
+        "trust_returns_text": "30 días de devolución"
+      }
+    },
+    "trust": {
+      "type": "trust-badges"
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "También te puede interesar",
+        "subheading": "",
+        "products_to_show": 4,
+        "columns": 4,
+        "show_view_all": false
+      }
+    },
+    "testimonials": {
+      "type": "testimonials"
+    }
+  },
+  "order": ["main", "trust", "related", "testimonials"]
+}
