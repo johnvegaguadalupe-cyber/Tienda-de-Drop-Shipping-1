@@ -25,7 +25,8 @@
       "subtext": "The page you're looking for doesn't exist or was moved.",
       "link": "Back to store"
     },
-    "continue_shopping": "Continue shopping"
+    "continue_shopping": "Continue shopping",
+    "close": "Close"
   },
   "header": {
     "menu": "Menu",

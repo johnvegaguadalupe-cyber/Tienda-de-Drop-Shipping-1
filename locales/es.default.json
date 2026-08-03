@@ -25,7 +25,8 @@
       "subtext": "La página que buscas no existe o fue movida.",
       "link": "Volver a la tienda"
     },
-    "continue_shopping": "Seguir comprando"
+    "continue_shopping": "Seguir comprando",
+    "close": "Cerrar"
   },
   "header": {
     "menu": "Menú",

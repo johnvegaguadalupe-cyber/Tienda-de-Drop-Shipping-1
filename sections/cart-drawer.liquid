@@ -5,7 +5,7 @@
       <h2>{{ 'cart.title' | t }}</h2>
       <button type="button" class="cart-drawer__close" data-cart-toggle>
         {% render 'icon', icon: 'close' %}
-        <span class="visually-hidden">{{ 'general.404.link' | t }}</span>
+        <span class="visually-hidden">{{ 'general.close' | t }}</span>
       </button>
     </div>
 
@@ -25,7 +25,7 @@
                   <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
                 {%- endif -%}
                 <div class="cart-drawer__item-qty">
-                  <input type="number" min="0" value="{{ item.quantity }}" data-quantity-input data-line="{{ forloop.index }}" aria-label="{{ 'general.search.search' | t }}">
+                  <input type="number" min="0" value="{{ item.quantity }}" data-quantity-input data-line="{{ forloop.index }}" aria-label="{{ 'products.product.quantity' | t }}">
                   <button type="button" data-remove-item data-line="{{ forloop.index }}">{{ 'cart.remove' | t }}</button>
                 </div>
               </div>
