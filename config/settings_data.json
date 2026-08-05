@@ -1,5 +1,23 @@
 {
-  "current": "Default",
+  "current": {
+    "color_background": "#ffffff",
+    "color_text": "#1a1a1a",
+    "color_primary": "#1a73e8",
+    "color_primary_text": "#ffffff",
+    "color_accent": "#e63946",
+    "color_border": "#e5e5e5",
+    "color_surface": "#f7f7f7",
+    "font_heading": "assistant_n4",
+    "font_body": "assistant_n4",
+    "page_width": 1300,
+    "spacing_sections": 48,
+    "border_radius": 8,
+    "cart_type": "drawer",
+    "show_cart_note": true,
+    "social_instagram": "",
+    "social_facebook": "",
+    "social_tiktok": ""
+  },
   "presets": {
     "Default": {
       "color_background": "#ffffff",
