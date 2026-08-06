@@ -13,7 +13,14 @@
       }
     },
     "trust": {
-      "type": "trust-badges"
+      "type": "trust-badges",
+      "blocks": {
+        "badge-1": { "type": "shipping" },
+        "badge-2": { "type": "payment" },
+        "badge-3": { "type": "returns" },
+        "badge-4": { "type": "quality" }
+      },
+      "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"]
     },
     "related": {
       "type": "featured-collection",
@@ -26,7 +33,16 @@
       }
     },
     "testimonials": {
-      "type": "testimonials"
+      "type": "testimonials",
+      "settings": {
+        "heading": "Lo que dicen nuestros clientes"
+      },
+      "blocks": {
+        "t-1": { "type": "testimonial", "settings": { "rating": 5, "quote": "Llegó antes de lo esperado y la calidad superó mis expectativas.", "author": "María G." } },
+        "t-2": { "type": "testimonial", "settings": { "rating": 5, "quote": "Atención al cliente rápida y producto tal cual la foto.", "author": "Carlos R." } },
+        "t-3": { "type": "testimonial", "settings": { "rating": 4, "quote": "Muy buena relación calidad-precio, repetiré compra.", "author": "Lucía P." } }
+      },
+      "block_order": ["t-1", "t-2", "t-3"]
     }
   },
   "order": ["main", "trust", "related", "testimonials"]

@@ -5,7 +5,7 @@
 
   <div class="testimonials__grid">
     {%- for block in section.blocks -%}
-      <div class="testimonial" {{ block.shopify_attributes }}>
+      <div class="testimonial">
         <div class="testimonial__stars" aria-hidden="true">
           {%- for i in (1..5) -%}
             {%- if i <= block.settings.rating -%}{% render 'icon', icon: 'star', size: 16 %}{%- endif -%}
@@ -38,23 +38,6 @@
         { "type": "range", "id": "rating", "label": "Estrellas", "min": 1, "max": 5, "step": 1, "default": 5 },
         { "type": "textarea", "id": "quote", "label": "Opinión", "default": "Llegó antes de lo esperado y la calidad superó mis expectativas." },
         { "type": "text", "id": "author", "label": "Nombre", "default": "Cliente verificado" }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "testimonial", "settings": { "rating": 5, "quote": "Llegó antes de lo esperado y la calidad superó mis expectativas.", "author": "María G." } },
-      { "type": "testimonial", "settings": { "rating": 5, "quote": "Atención al cliente rápida y producto tal cual la foto.", "author": "Carlos R." } },
-      { "type": "testimonial", "settings": { "rating": 4, "quote": "Muy buena relación calidad-precio, repetiré compra.", "author": "Lucía P." } }
-    ]
-  },
-  "presets": [
-    {
-      "name": "Testimonios",
-      "blocks": [
-        { "type": "testimonial", "settings": { "rating": 5, "quote": "Llegó antes de lo esperado y la calidad superó mis expectativas.", "author": "María G." } },
-        { "type": "testimonial", "settings": { "rating": 5, "quote": "Atención al cliente rápida y producto tal cual la foto.", "author": "Carlos R." } },
-        { "type": "testimonial", "settings": { "rating": 4, "quote": "Muy buena relación calidad-precio, repetiré compra.", "author": "Lucía P." } }
       ]
     }
   ]

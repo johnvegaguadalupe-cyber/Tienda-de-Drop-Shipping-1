@@ -3,7 +3,7 @@
 
   <div class="faq__list">
     {%- for block in section.blocks -%}
-      <div class="faq__item" {{ block.shopify_attributes }}>
+      <div class="faq__item">
         <button type="button" class="faq__question" data-faq-toggle aria-expanded="false">
           <span>{{ block.settings.question }}</span>
           {% render 'icon', icon: 'chevron-down' %}
@@ -29,23 +29,6 @@
       "settings": [
         { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Cuánto tarda el envío?" },
         { "type": "textarea", "id": "answer", "label": "Respuesta", "default": "El envío estándar tarda entre 5 y 10 días laborables." }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "question", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "El envío estándar tarda entre 5 y 10 días laborables." } },
-      { "type": "question", "settings": { "question": "¿Puedo devolver mi pedido?", "answer": "Sí, dispones de 30 días desde la recepción para solicitar una devolución." } },
-      { "type": "question", "settings": { "question": "¿Qué métodos de pago aceptáis?", "answer": "Tarjeta de crédito/débito, PayPal y otros métodos locales según tu país." } }
-    ]
-  },
-  "presets": [
-    {
-      "name": "Preguntas frecuentes",
-      "blocks": [
-        { "type": "question", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "El envío estándar tarda entre 5 y 10 días laborables." } },
-        { "type": "question", "settings": { "question": "¿Puedo devolver mi pedido?", "answer": "Sí, dispones de 30 días desde la recepción para solicitar una devolución." } },
-        { "type": "question", "settings": { "question": "¿Qué métodos de pago aceptáis?", "answer": "Tarjeta de crédito/débito, PayPal y otros métodos locales según tu país." } }
       ]
     }
   ]
