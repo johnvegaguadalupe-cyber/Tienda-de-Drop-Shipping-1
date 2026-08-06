@@ -9,7 +9,11 @@
       }
     },
     "trust": {
-      "type": "trust-badges"
+      "type": "trust-badges",
+      "blocks": {
+        "b1": { "type": "shipping" }
+      },
+      "block_order": ["b1"]
     }
   },
   "order": ["about", "trust"]

@@ -1,9 +1,37 @@
 <div class="section trust-badges page-width">
-  <p>Prueba de confianza sin bloques</p>
+  <ul class="trust-badges__list">
+    {%- for block in section.blocks -%}
+      <li class="trust-badges__item" {{ block.shopify_attributes }}>
+        <p class="trust-badges__title">{{ block.settings.title }}</p>
+      </li>
+    {%- endfor -%}
+  </ul>
 </div>
 
 {% schema %}
 {
-  "name": "Iconos de confianza"
+  "name": "Iconos de confianza",
+  "blocks": [
+    {
+      "type": "shipping",
+      "name": "Envío",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Envío rápido" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "shipping" }
+    ]
+  },
+  "presets": [
+    {
+      "name": "Iconos de confianza",
+      "blocks": [
+        { "type": "shipping" }
+      ]
+    }
+  ]
 }
 {% endschema %}
