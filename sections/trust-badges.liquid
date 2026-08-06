@@ -1,8 +1,20 @@
 <div class="section trust-badges page-width">
   <ul class="trust-badges__list">
     {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'shipping' -%}
+          {%- assign badge_icon = 'truck' -%}
+        {%- when 'payment' -%}
+          {%- assign badge_icon = 'shield' -%}
+        {%- when 'returns' -%}
+          {%- assign badge_icon = 'refresh' -%}
+        {%- when 'quality' -%}
+          {%- assign badge_icon = 'star' -%}
+        {%- else -%}
+          {%- assign badge_icon = 'truck' -%}
+      {%- endcase -%}
       <li class="trust-badges__item" {{ block.shopify_attributes }}>
-        {% render 'icon', icon: block.settings.icon, size: 32 %}
+        {% render 'icon', icon: badge_icon, size: 32 %}
         <div>
           <p class="trust-badges__title">{{ block.settings.title }}</p>
           <p class="trust-badges__text">{{ block.settings.text }}</p>
@@ -17,42 +29,54 @@
   "name": "Iconos de confianza",
   "blocks": [
     {
-      "type": "badge",
-      "name": "Icono",
+      "type": "shipping",
+      "name": "Envío",
       "settings": [
-        {
-          "type": "select",
-          "id": "icon",
-          "label": "Icono",
-          "options": [
-            { "value": "truck", "label": "Camión (envío)" },
-            { "value": "shield", "label": "Escudo (pago seguro)" },
-            { "value": "refresh", "label": "Flechas (devoluciones)" },
-            { "value": "star", "label": "Estrella (calidad)" }
-          ],
-          "default": "truck"
-        },
         { "type": "text", "id": "title", "label": "Título", "default": "Envío rápido" },
         { "type": "text", "id": "text", "label": "Texto", "default": "Entrega en 3-7 días" }
+      ]
+    },
+    {
+      "type": "payment",
+      "name": "Pago seguro",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Pago 100% seguro" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "Cifrado SSL" }
+      ]
+    },
+    {
+      "type": "returns",
+      "name": "Devoluciones",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Devolución fácil" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "30 días para cambios" }
+      ]
+    },
+    {
+      "type": "quality",
+      "name": "Calidad",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Calidad garantizada" },
+        { "type": "text", "id": "text", "label": "Texto", "default": "Productos revisados" }
       ]
     }
   ],
   "default": {
     "blocks": [
-      { "type": "badge", "settings": { "icon": "truck", "title": "Envío rápido", "text": "Entrega en 3-7 días" } },
-      { "type": "badge", "settings": { "icon": "shield", "title": "Pago 100% seguro", "text": "Cifrado SSL" } },
-      { "type": "badge", "settings": { "icon": "refresh", "title": "Devolución fácil", "text": "30 días para cambios" } },
-      { "type": "badge", "settings": { "icon": "star", "title": "Calidad garantizada", "text": "Productos revisados" } }
+      { "type": "shipping" },
+      { "type": "payment" },
+      { "type": "returns" },
+      { "type": "quality" }
     ]
   },
   "presets": [
     {
       "name": "Iconos de confianza",
       "blocks": [
-        { "type": "badge", "settings": { "icon": "truck", "title": "Envío rápido", "text": "Entrega en 3-7 días" } },
-        { "type": "badge", "settings": { "icon": "shield", "title": "Pago 100% seguro", "text": "Cifrado SSL" } },
-        { "type": "badge", "settings": { "icon": "refresh", "title": "Devolución fácil", "text": "30 días para cambios" } },
-        { "type": "badge", "settings": { "icon": "star", "title": "Calidad garantizada", "text": "Productos revisados" } }
+        { "type": "shipping" },
+        { "type": "payment" },
+        { "type": "returns" },
+        { "type": "quality" }
       ]
     }
   ]

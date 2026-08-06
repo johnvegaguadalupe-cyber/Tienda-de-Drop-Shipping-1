@@ -11,10 +11,10 @@
     "trust": {
       "type": "trust-badges",
       "blocks": {
-        "badge-1": { "type": "badge", "settings": { "icon": "truck", "title": "Envío rápido", "text": "Entrega en 3-7 días" } },
-        "badge-2": { "type": "badge", "settings": { "icon": "shield", "title": "Pago 100% seguro", "text": "Cifrado SSL" } },
-        "badge-3": { "type": "badge", "settings": { "icon": "refresh", "title": "Devolución fácil", "text": "30 días para cambios" } },
-        "badge-4": { "type": "badge", "settings": { "icon": "star", "title": "Calidad garantizada", "text": "Productos revisados" } }
+        "badge-1": { "type": "shipping" },
+        "badge-2": { "type": "payment" },
+        "badge-3": { "type": "returns" },
+        "badge-4": { "type": "quality" }
       },
       "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"]
     }
