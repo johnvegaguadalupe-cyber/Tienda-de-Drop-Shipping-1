@@ -1,74 +1,13 @@
 {
   "sections": {
-    "hero": {
-      "type": "hero-banner",
-      "settings": {
-        "eyebrow": "Nuevo - Envío rápido",
-        "heading": "El producto que estabas buscando",
-        "subheading": "Calidad garantizada, envío a todo el país y devolución sin complicaciones.",
-        "button_label": "Comprar ahora",
-        "button_link": "/collections/all",
-        "overlay_opacity": 30
-      }
-    },
-    "trust": {
-      "type": "trust-badges",
-      "blocks": {
-        "badge-1": { "type": "badge", "settings": { "icon": "truck", "title": "Envío rápido", "text": "Entrega en 3-7 días" } },
-        "badge-2": { "type": "badge", "settings": { "icon": "shield", "title": "Pago 100% seguro", "text": "Cifrado SSL" } },
-        "badge-3": { "type": "badge", "settings": { "icon": "refresh", "title": "Devolución fácil", "text": "30 días para cambios" } },
-        "badge-4": { "type": "badge", "settings": { "icon": "star", "title": "Calidad garantizada", "text": "Productos revisados" } }
-      },
-      "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"]
-    },
-    "featured": {
-      "type": "featured-collection",
-      "settings": {
-        "heading": "Los favoritos",
-        "subheading": "Lo más vendido esta semana",
-        "products_to_show": 8,
-        "columns": 4,
-        "show_view_all": true,
-        "view_all_label": "Ver todo"
-      }
-    },
     "about": {
       "type": "rich-text",
       "settings": {
         "alignment": "center",
-        "heading": "Sobre nosotros",
-        "content": "<p>Seleccionamos productos de calidad y trabajamos con proveedores fiables para que recibas tu pedido a tiempo, siempre.</p>",
-        "button_label": "Conócenos",
-        "button_link": "/pages/sobre-nosotros"
+        "heading": "Prueba de portada",
+        "content": "<p>Si ves este texto, la plantilla de inicio funciona.</p>"
       }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "settings": {
-        "heading": "Lo que dicen nuestros clientes"
-      },
-      "blocks": {
-        "t-1": { "type": "testimonial", "settings": { "rating": 5, "quote": "Llegó antes de lo esperado y la calidad superó mis expectativas.", "author": "María G." } },
-        "t-2": { "type": "testimonial", "settings": { "rating": 5, "quote": "Atención al cliente rápida y producto tal cual la foto.", "author": "Carlos R." } },
-        "t-3": { "type": "testimonial", "settings": { "rating": 4, "quote": "Muy buena relación calidad-precio, repetiré compra.", "author": "Lucía P." } }
-      },
-      "block_order": ["t-1", "t-2", "t-3"]
-    },
-    "faq": {
-      "type": "faq",
-      "settings": {
-        "heading": "Preguntas frecuentes"
-      },
-      "blocks": {
-        "q-1": { "type": "question", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "El envío estándar tarda entre 5 y 10 días laborables." } },
-        "q-2": { "type": "question", "settings": { "question": "¿Puedo devolver mi pedido?", "answer": "Sí, dispones de 30 días desde la recepción para solicitar una devolución." } },
-        "q-3": { "type": "question", "settings": { "question": "¿Qué métodos de pago aceptáis?", "answer": "Tarjeta de crédito/débito, PayPal y otros métodos locales según tu país." } }
-      },
-      "block_order": ["q-1", "q-2", "q-3"]
-    },
-    "newsletter": {
-      "type": "newsletter"
     }
   },
-  "order": ["hero", "trust", "featured", "about", "testimonials", "faq", "newsletter"]
+  "order": ["about"]
 }
