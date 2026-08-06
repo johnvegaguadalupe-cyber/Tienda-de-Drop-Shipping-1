@@ -1,0 +1,30 @@
+<div class="marquee-section" style="--marquee-duration: {{ section.settings.speed }}s;">
+  <div class="marquee-track">
+    <div class="marquee-content">
+      {%- assign marquee_items = section.settings.items | split: ',' -%}
+      {%- for item in marquee_items -%}
+        <span class="marquee-item">{{ item | strip }}</span>
+        <span class="marquee-dot" aria-hidden="true">•</span>
+      {%- endfor -%}
+    </div>
+    <div class="marquee-content" aria-hidden="true">
+      {%- for item in marquee_items -%}
+        <span class="marquee-item">{{ item | strip }}</span>
+        <span class="marquee-dot" aria-hidden="true">•</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cinta de categorías",
+  "settings": [
+    { "type": "textarea", "id": "items", "label": "Palabras (separadas por comas)", "default": "Running, Yoga, Ciclismo, Natación, Boxeo, Triatlón, Apnea, Escalada, Canto, Oratoria" },
+    { "type": "range", "id": "speed", "label": "Velocidad (segundos por vuelta)", "min": 10, "max": 60, "step": 5, "default": 30 }
+  ],
+  "presets": [
+    { "name": "Cinta de categorías" }
+  ]
+}
+{% endschema %}

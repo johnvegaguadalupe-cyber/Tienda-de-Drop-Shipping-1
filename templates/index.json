@@ -3,12 +3,26 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
-        "eyebrow": "Nuevo - Envío rápido",
-        "heading": "El producto que estabas buscando",
-        "subheading": "Calidad garantizada, envío a todo el país y devolución sin complicaciones.",
-        "button_label": "Comprar ahora",
+        "eyebrow": "Entrenamiento respiratorio",
+        "heading": "Entrena tu respiración. ",
+        "heading_highlight": "Rinde más.",
+        "subheading": "Fortalece tu diafragma y aumenta tu capacidad pulmonar en pocos minutos al día, con resistencia 100% ajustable.",
+        "button_label": "Quiero el mío",
         "button_link": "/collections/all",
-        "overlay_opacity": 30
+        "button_label_2": "Cómo funciona",
+        "button_link_2": "#",
+        "show_rating": true,
+        "rating_text": "+2.000 clientes",
+        "trust_item_1": "Envío 24-48 h",
+        "trust_item_2": "Garantía 30 días",
+        "trust_item_3": "Pago seguro"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "items": "Running, Yoga, Ciclismo, Natación, Boxeo, Triatlón, Apnea, Escalada, Canto, Oratoria",
+        "speed": 30
       }
     },
     "trust": {
@@ -70,5 +84,5 @@
       "type": "newsletter"
     }
   },
-  "order": ["hero", "trust", "featured", "about", "testimonials", "faq", "newsletter"]
+  "order": ["hero", "marquee", "trust", "featured", "about", "testimonials", "faq", "newsletter"]
 }

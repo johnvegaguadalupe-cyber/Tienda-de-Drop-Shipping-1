@@ -1,45 +1,86 @@
-<div class="hero" style="--hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};">
-  {%- if section.settings.image -%}
-    <img
-      class="hero__image"
-      src="{{ section.settings.image | image_url: width: 1800 }}"
-      alt=""
-      loading="eager"
-      fetchpriority="high"
-      width="{{ section.settings.image.width }}"
-      height="{{ section.settings.image.height }}"
-    >
-  {%- endif -%}
-  <div class="hero__overlay"></div>
-  <div class="hero__content page-width">
-    {%- if section.settings.eyebrow != blank -%}
-      <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
-    {%- endif -%}
-    {%- if section.settings.heading != blank -%}
-      <h1 class="hero__heading">{{ section.settings.heading }}</h1>
-    {%- endif -%}
-    {%- if section.settings.subheading != blank -%}
-      <p class="hero__subheading">{{ section.settings.subheading }}</p>
-    {%- endif -%}
-    {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link }}" class="button button--primary button--large">
-        {{ section.settings.button_label }}
-      </a>
-    {%- endif -%}
+<section class="hero hero--split">
+  <div class="hero__inner page-width">
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hero__eyebrow"><span class="hero__eyebrow-line"></span>{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank or section.settings.heading_highlight != blank -%}
+        <h1 class="hero__heading">
+          {%- if section.settings.heading != blank -%}{{ section.settings.heading }}{%- endif -%}
+          {%- if section.settings.heading_highlight != blank -%}
+            <span class="hero__heading-highlight">{{ section.settings.heading_highlight }}</span>
+          {%- endif -%}
+        </h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      <div class="hero__buttons">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="button button--gradient">{{ section.settings.button_label }} →</a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 }}" class="button button--outline-dark">{{ section.settings.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_rating -%}
+        <div class="hero__meta">
+          <span class="hero__stars" aria-hidden="true">★★★★★</span>
+          {%- if section.settings.rating_text != blank -%}
+            <span class="hero__meta-item">{{ section.settings.rating_text }}</span>
+          {%- endif -%}
+          {%- if section.settings.trust_item_1 != blank -%}
+            <span class="hero__meta-item">✓ {{ section.settings.trust_item_1 }}</span>
+          {%- endif -%}
+          {%- if section.settings.trust_item_2 != blank -%}
+            <span class="hero__meta-item">✓ {{ section.settings.trust_item_2 }}</span>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.trust_item_3 != blank -%}
+          <p class="hero__meta-item hero__meta-item--solo">✓ {{ section.settings.trust_item_3 }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="hero__media">
+      <div class="hero__glow" aria-hidden="true"></div>
+      {%- if section.settings.image -%}
+        <img
+          class="hero__image"
+          src="{{ section.settings.image | image_url: width: 1000 }}"
+          alt="{{ section.settings.image.alt | escape }}"
+          loading="eager"
+          fetchpriority="high"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+        >
+      {%- endif -%}
+    </div>
   </div>
-</div>
+</section>
 
 {% schema %}
 {
   "name": "Banner principal",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Imagen de fondo" },
-    { "type": "range", "id": "overlay_opacity", "label": "Oscurecer imagen", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 30 },
-    { "type": "text", "id": "eyebrow", "label": "Texto pequeño superior", "default": "Nuevo - Envío rápido" },
-    { "type": "text", "id": "heading", "label": "Título", "default": "El producto que estabas buscando" },
-    { "type": "textarea", "id": "subheading", "label": "Subtítulo", "default": "Calidad garantizada, envío a todo el país y devolución sin complicaciones." },
-    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Comprar ahora" },
-    { "type": "url", "id": "button_link", "label": "Enlace del botón" }
+    { "type": "image_picker", "id": "image", "label": "Imagen del producto" },
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeño superior", "default": "Entrenamiento respiratorio" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Entrena tu respiración. " },
+    { "type": "text", "id": "heading_highlight", "label": "Título (parte destacada, en color)", "default": "Rinde más." },
+    { "type": "textarea", "id": "subheading", "label": "Subtítulo", "default": "Fortalece tu diafragma y aumenta tu capacidad pulmonar en pocos minutos al día, con resistencia 100% ajustable." },
+    { "type": "text", "id": "button_label", "label": "Texto del botón principal", "default": "Quiero el mío" },
+    { "type": "url", "id": "button_link", "label": "Enlace del botón principal" },
+    { "type": "text", "id": "button_label_2", "label": "Texto del botón secundario", "default": "Cómo funciona" },
+    { "type": "url", "id": "button_link_2", "label": "Enlace del botón secundario" },
+    { "type": "checkbox", "id": "show_rating", "label": "Mostrar fila de valoración y confianza", "default": true },
+    { "type": "text", "id": "rating_text", "label": "Texto junto a las estrellas", "default": "+2.000 clientes" },
+    { "type": "text", "id": "trust_item_1", "label": "Texto de confianza 1", "default": "Envío 24-48 h" },
+    { "type": "text", "id": "trust_item_2", "label": "Texto de confianza 2", "default": "Garantía 30 días" },
+    { "type": "text", "id": "trust_item_3", "label": "Texto de confianza 3", "default": "Pago seguro" }
   ],
   "presets": [
     { "name": "Banner principal" }

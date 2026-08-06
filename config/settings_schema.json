@@ -10,13 +10,14 @@
   {
     "name": "Colores",
     "settings": [
-      { "type": "color", "id": "color_background", "label": "Fondo", "default": "#ffffff" },
-      { "type": "color", "id": "color_text", "label": "Texto", "default": "#1a1a1a" },
-      { "type": "color", "id": "color_primary", "label": "Color principal (botones, enlaces)", "default": "#1a73e8" },
+      { "type": "color", "id": "color_background", "label": "Fondo", "default": "#0a0e1a" },
+      { "type": "color", "id": "color_text", "label": "Texto", "default": "#e6ebf5" },
+      { "type": "color", "id": "color_primary", "label": "Color principal (botones, enlaces)", "default": "#2f6fed" },
+      { "type": "color", "id": "color_primary_end", "label": "Color principal (degradado, extremo)", "default": "#38bdf8" },
       { "type": "color", "id": "color_primary_text", "label": "Texto sobre el color principal", "default": "#ffffff" },
       { "type": "color", "id": "color_accent", "label": "Color de acento (ofertas, descuentos)", "default": "#e63946" },
-      { "type": "color", "id": "color_border", "label": "Bordes", "default": "#e5e5e5" },
-      { "type": "color", "id": "color_surface", "label": "Fondo de tarjetas/secciones", "default": "#f7f7f7" }
+      { "type": "color", "id": "color_border", "label": "Bordes", "default": "#232a3d" },
+      { "type": "color", "id": "color_surface", "label": "Fondo de tarjetas/secciones", "default": "#111827" }
     ]
   },
   {
