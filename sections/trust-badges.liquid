@@ -1,7 +1,7 @@
 <div class="section trust-badges page-width">
   <ul class="trust-badges__list">
     {%- for block in section.blocks -%}
-      <li class="trust-badges__item" {{ block.shopify_attributes }}>
+      <li class="trust-badges__item">
         <p class="trust-badges__title">{{ block.settings.title }}</p>
       </li>
     {%- endfor -%}
@@ -17,19 +17,6 @@
       "name": "Envío",
       "settings": [
         { "type": "text", "id": "title", "label": "Título", "default": "Envío rápido" }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "shipping" }
-    ]
-  },
-  "presets": [
-    {
-      "name": "Iconos de confianza",
-      "blocks": [
-        { "type": "shipping" }
       ]
     }
   ]
