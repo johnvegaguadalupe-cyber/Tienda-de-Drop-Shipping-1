@@ -9,14 +9,7 @@
       }
     },
     "trust": {
-      "type": "trust-badges",
-      "blocks": {
-        "badge-1": { "type": "shipping" },
-        "badge-2": { "type": "payment" },
-        "badge-3": { "type": "returns" },
-        "badge-4": { "type": "quality" }
-      },
-      "block_order": ["badge-1", "badge-2", "badge-3", "badge-4"]
+      "type": "trust-badges"
     }
   },
   "order": ["about", "trust"]

@@ -1,84 +1,9 @@
 <div class="section trust-badges page-width">
-  <ul class="trust-badges__list">
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'shipping' -%}
-          {%- assign badge_icon = 'truck' -%}
-        {%- when 'payment' -%}
-          {%- assign badge_icon = 'shield' -%}
-        {%- when 'returns' -%}
-          {%- assign badge_icon = 'refresh' -%}
-        {%- when 'quality' -%}
-          {%- assign badge_icon = 'star' -%}
-        {%- else -%}
-          {%- assign badge_icon = 'truck' -%}
-      {%- endcase -%}
-      <li class="trust-badges__item" {{ block.shopify_attributes }}>
-        {% render 'icon', icon: badge_icon, size: 32 %}
-        <div>
-          <p class="trust-badges__title">{{ block.settings.title }}</p>
-          <p class="trust-badges__text">{{ block.settings.text }}</p>
-        </div>
-      </li>
-    {%- endfor -%}
-  </ul>
+  <p>Prueba de confianza sin bloques</p>
 </div>
 
 {% schema %}
 {
-  "name": "Iconos de confianza",
-  "blocks": [
-    {
-      "type": "shipping",
-      "name": "Envío",
-      "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Envío rápido" },
-        { "type": "text", "id": "text", "label": "Texto", "default": "Entrega en 3-7 días" }
-      ]
-    },
-    {
-      "type": "payment",
-      "name": "Pago seguro",
-      "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Pago 100% seguro" },
-        { "type": "text", "id": "text", "label": "Texto", "default": "Cifrado SSL" }
-      ]
-    },
-    {
-      "type": "returns",
-      "name": "Devoluciones",
-      "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Devolución fácil" },
-        { "type": "text", "id": "text", "label": "Texto", "default": "30 días para cambios" }
-      ]
-    },
-    {
-      "type": "quality",
-      "name": "Calidad",
-      "settings": [
-        { "type": "text", "id": "title", "label": "Título", "default": "Calidad garantizada" },
-        { "type": "text", "id": "text", "label": "Texto", "default": "Productos revisados" }
-      ]
-    }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "shipping" },
-      { "type": "payment" },
-      { "type": "returns" },
-      { "type": "quality" }
-    ]
-  },
-  "presets": [
-    {
-      "name": "Iconos de confianza",
-      "blocks": [
-        { "type": "shipping" },
-        { "type": "payment" },
-        { "type": "returns" },
-        { "type": "quality" }
-      ]
-    }
-  ]
+  "name": "Iconos de confianza"
 }
 {% endschema %}
